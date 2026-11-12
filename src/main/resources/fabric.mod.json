@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "waaous-addon",
+  "version": "${version}",
+  "name": "waaous-addon",
+  "description": "waaous 的 Meteor Client addon：SmartMiner 自动挖矿 + QQ 群号识别。",
+  "authors": ["waaous"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "meteor": [
+      "com.waaous.addon.WaaousAddon"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.2",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "meteor-client": "*"
+  },
+  "custom": {
+    "meteor-client:color": "145,61,226"
+  }
+}

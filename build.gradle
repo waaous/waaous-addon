@@ -1,0 +1,47 @@
+plugins {
+    id 'net.fabricmc.fabric-loom-remap' version "1.17.19"
+    id 'maven-publish'
+}
+
+group = "com.waaous"
+version = "0.1.0"
+
+base {
+    archivesName = "waaous-addon"
+}
+
+repositories {
+    // 本地预下载仓库（mercury/lorenz-tiny 已完整）
+    maven { url 'file:///Y:/waaous-addon/maven-local' }
+    // 国内镜像源
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://bmclapi2.bangbang93.com/maven' }
+    // 备用
+    maven { url 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.21.11"
+    // Yarn 映射：Meteor Client 1.21.x 使用 Yarn；loom 会把 libs/ 里的 intermediate jar 自动 remap 回 Yarn。
+    mappings "net.fabricmc:yarn:1.21.11+build.6:v2"
+
+    // 本地 Meteor Client（intermediate 玩家版 jar）
+    modCompileOnly files("libs/meteor-client-1.21.11-86.jar")
+    // 本地 Baritone（intermediate jar）
+    modCompileOnly files("libs/baritone-1.21.11.jar")
+    // Orbit 事件总线（纯 Java 库）
+    compileOnly files("libs/orbit-0.2.4.jar")
+}
+
+processResources {
+    filesMatching('fabric.mod.json') {
+        expand "version": version
+    }
+}
+
+java {
+    withSourcesJar()
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}

@@ -1,0 +1,12 @@
+.gradle/
+build/
+.idea/
+.vscode/
+*.iml
+run/
+gradle-dist/
+maven-local/
+libs/
+artifacts/
+archive/
+tooling/
