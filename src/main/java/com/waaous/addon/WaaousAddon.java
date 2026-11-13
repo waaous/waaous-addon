@@ -1,6 +1,7 @@
 package com.waaous.addon;
 
 import com.waaous.addon.modules.QQGroupDetector;
+import com.waaous.addon.modules.RallyFollow;
 import com.waaous.addon.modules.SmartMiner;
 import com.mojang.logging.LogUtils;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
@@ -20,6 +21,7 @@ public class WaaousAddon extends MeteorAddon {
 
         Modules.get().add(new SmartMiner());
         Modules.get().add(new QQGroupDetector());
+        Modules.get().add(new RallyFollow());
     }
 
     @Override

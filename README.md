@@ -2,12 +2,13 @@
 
 Meteor Client（彗星）附加模块 —— Fabric 客户端 mod，目标 **Minecraft 1.21.11**（Yarn 映射）。
 
-包含两个模块：
+包含三个模块：
 
 | 模块 | 类 | 作用 |
 |---|---|---|
 | SmartMiner | `com.waaous.addon.modules.SmartMiner` | 自动挖矿：环形扫描目标矿 → Baritone 寻路 → 自动换镐 → 安全挖掘 → 拾取掉落物 |
 | QQGroupDetector | `com.waaous.addon.modules.QQGroupDetector` | 从聊天栏（含私信）与 boss 条提取 5–10 位 QQ 群号，去重写入 `QQnumber.txt` |
+| RallyFollow | `com.waaous.addon.modules.RallyFollow` | 挂电集结跟随：公开聊天出现关键词（默认「挂电集结」）时自动回复（默认「谁可思谁闻」，可配置） |
 
 入口：`com.waaous.addon.WaaousAddon`（`MeteorAddon`，`fabric.mod.json` 的 `meteor` entrypoint），并注册自定义分类 `waaous-addon`。
 
@@ -33,7 +34,7 @@ build.bat
 gradlew.bat build
 ```
 
-成品：`build/libs/waaous-addon-0.1.0.jar`（已构建成品在 [`artifacts/`](artifacts)）。
+成品：`build/libs/waaous-addon-0.2.0.jar`（已构建成品在 [`artifacts/`](artifacts)）。
 
 > 首次构建若 `fabric-loom-remap` 插件尚未在本机 `~/.gradle` 缓存，会联网解析一次（走 `maven.aliyun.com` / `bmclapi` / `maven.fabricmc.net`）；之后即离线。
 
@@ -44,9 +45,9 @@ waaous-addon/
 ├── build.gradle / settings.gradle / gradle.properties   # 构建脚本
 ├── gradlew / gradlew.bat / gradle/wrapper/              # Gradle wrapper（9.5.1）
 ├── build.bat                                            # 一键离线编译
-├── src/main/java/com/waaous/addon/                      # 当前源码（第 3 代）
+├── src/main/java/com/waaous/addon/                      # 当前源码（第 4 代）
 │   ├── WaaousAddon.java
-│   └── modules/{SmartMiner,QQGroupDetector}.java
+│   └── modules/{SmartMiner,QQGroupDetector,RallyFollow}.java
 ├── src/main/resources/fabric.mod.json
 ├── libs/                 # 本地 vendored 依赖（intermediate jar）
 ├── maven-local/          # 本地 Maven 仓库（loom-remap 三依赖）
@@ -58,4 +59,4 @@ waaous-addon/
 
 ## 历史各时期
 
-三代演进已归档在 [`archive/`](archive)，详见 [`archive/README.md`](archive/README.md)。
+四代演进已归档在 [`archive/`](archive)，详见 [`archive/README.md`](archive/README.md)。
